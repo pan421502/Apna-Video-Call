@@ -11,8 +11,10 @@ import ScreenShareIcon from '@mui/icons-material/ScreenShare';
 import StopScreenShareIcon from '@mui/icons-material/StopScreenShare'
 import ChatIcon from '@mui/icons-material/Chat'
 import server from "../environment";
+import { useNavigate } from "react-router-dom";
 
 const server_url = server;
+
 
 var connections = {};
 
@@ -404,7 +406,7 @@ export default function VideoMeetComponent() {
     connectToSocketServer();
   };
 
-  
+  let routeTo = useNavigate();
 
   let connect = () => {
     setAskForUsername(false);
@@ -440,7 +442,7 @@ export default function VideoMeetComponent() {
       tracks.forEach(track => track.stop())
     }catch (e) {}
 
-    window.location.href = "/home"
+    routeTo("/home")
   }
 
 
